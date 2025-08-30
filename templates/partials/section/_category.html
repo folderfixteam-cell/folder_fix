@@ -1,0 +1,27 @@
+<!-- Categories Section -->
+<section id="categories" class="section-gradient" role="region" aria-labelledby="categoriesSectionTitle">
+  <div class="container pb-5">
+    {% if cate_title %}
+      {% include "partials/components/_section_title.html"  with title=cate_title.heading description=cate_title.subtitle color_class=cate_title.color_class section_id="categoriesSectionTitle" %}
+    {% else %}
+      <!-- Fallback title if cate_title missing -->
+      <div class="text-center mb-4">
+        <h2 id="categoriesSectionTitle" class="fw-bold">Categories</h2>
+        <p class="text-muted">Explore parts by category — folders, batteries, frames, OCA glass, and more.</p>
+      </div>
+    {% endif %}
+
+    <div class="row g-4 mt-lg-5 pb-lg-5">
+      {% for category in categories %}
+        {% include "partials/components/_cate_card.html" %}
+      {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted small" role="status">
+            <i class="bi bi-exclamation-circle me-1 text-warning"></i>
+            No Category Available At This Time
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

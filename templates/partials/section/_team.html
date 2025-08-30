@@ -1,0 +1,41 @@
+<section id="team" class="team-area" role="region" aria-labelledby="teamSectionTitle">
+  <div class="container pb-5">
+    {% if team_title %}
+      {% include "partials/components/_section_title.html" with title=team_title.heading description=team_title.subtitle color_class=team_title.color_class section_id="teamSectionTitle" %}
+    {% else %}
+      <div class="text-center mb-4">
+        <h2 id="teamSectionTitle" class="fw-bold">Meet Our Team</h2>
+        <p class="text-muted">The people behind FolderFix.</p>
+      </div>
+    {% endif %}
+
+    <div class="row g-4 mt-lg-5 pb-lg-5" role="list" aria-label="FolderFix team members">
+      {% for member in team_members %}
+      <div class="col-12 col-sm-6 col-lg-4" role="listitem">
+        <article class="team-card h-100" itemscope itemtype="https://schema.org/Person" aria-label="{{ member.full_name }}">
+          
+          {% include "partials/components/_team_profile.html" %}
+
+          <!-- Name, Title, Bio -->
+          <div class="team-body mt-2 ">
+            <h4 class="mb-0" itemprop="name">{{ member.full_name }}</h4>
+            <small class="d-block mt-2  text-primary " itemprop="jobTitle">{{ member.title }}</small>
+            {% if member.bio %}
+              <p class="text-muted small mt-2 mb-3 pb-1 lh-base" itemprop="description">{{ member.bio|truncatechars:100 }}</p>
+            {% endif %}
+
+            {% include "partials/components/_social_link.html" %}
+
+          </div>
+        </article>
+      </div>
+      {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted small">
+            <i class="bi bi-info-circle me-1"></i> Team profiles will appear here soon.
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

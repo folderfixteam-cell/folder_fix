@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+
+
+{% block base %}
+  {% include 'inc/_nav.html' %}
+
+  <main class="conatainer-fluid m-0 p-0">
+    {% block content %}
+
+    {% endblock %}
+  </main>
+
+  {% include 'inc/_footer.html' %}
+{% endblock %}

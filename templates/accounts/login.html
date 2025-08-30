@@ -1,0 +1,79 @@
+<!-- templates/accounts/login.html -->
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+  Folder Fix - Login
+{% endblock %}
+
+{% block content %}
+  <section class="container" role="region" aria-labelledby="loginTitle">
+    <div class="row justify-content-center m-0">
+      <div class="col-md-4 common-card shadow-sm">
+        <div class="card-body p-3">
+          <h3 class="mb-5 text-center fw-bold" id="loginTitle">
+            <i class="bi bi-person-circle text-primary me-2" aria-hidden="true"></i>
+            Welcome Back
+          </h3>
+
+          <form method="post" novalidate role="form" aria-labelledby="loginTitle">
+            {% csrf_token %}
+
+            <!-- Username / Email -->
+            <div class="mb-4 form-group">
+              <div class="input-group">
+                <span class="input-group-text text-primary"><i class="bi bi-person-fill "></i></span>
+                {{ form.username_or_email }}
+              </div>
+              {% if form.username_or_email.errors %}
+                <div class="text-danger small mt-1" role="alert">
+                  <i class="bi bi-exclamation-circle me-1" aria-hidden="true"></i>
+                  {{ form.username_or_email.errors|striptags }}
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3 form-group">
+
+              <div class="input-group">
+                <span class="input-group-text text-primary"><i class="bi bi-key-fill "></i></span>
+                {{ form.password }}
+              </div>
+              {% if form.password.errors %}
+                <div class="text-danger small mt-1" role="alert">
+                  <i class="bi bi-exclamation-circle me-1" aria-hidden="true"></i>
+                  {{ form.password.errors|striptags }}
+                </div>
+              {% endif %}
+            </div>
+
+            
+
+            <button class="btn btn-primary w-100 mt-3" aria-label="Log in to your account">
+              <i class="bi bi-box-arrow-in-right me-2" aria-hidden="true"></i>
+              Login
+            </button>
+          </form>
+
+          <p class="text-center m-0 pt-4">
+            <a href="{% url 'accounts:password-reset-request' %}" 
+               class="small text-decoration-none text-primary fw-semibold" 
+               title="Reset your password">
+              <i class="bi bi-question-circle me-1" aria-hidden="true"></i>
+              Forgot password?
+            </a>
+          </p>
+
+          <p class="text-center small mt-3 mb-0">
+            Don’t have an account?
+            <a href="{% url 'accounts:signup' %}" class="fw-semibold text-decoration-none">
+              <i class="bi bi-person-plus-fill me-1 text-primary" aria-hidden="true"></i>
+              Sign up
+            </a>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

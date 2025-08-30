@@ -1,0 +1,39 @@
+<script>
+    const searchInput = document.getElementById("searchInput");
+    const categorySelect = document.getElementById("categorySelect");
+    const priceRange = document.getElementById("priceRange");
+    const priceRangeLabel = document.getElementById("priceRangeLabel");
+    const productItems = document.querySelectorAll(".product-item");
+    
+    function filterProducts() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const categoryId = categorySelect.value;
+      const maxPrice = parseFloat(priceRange.value);
+    
+      productItems.forEach(item => {
+        const name = item.dataset.name;
+        const category = item.dataset.category;
+        const price = parseFloat(item.dataset.price);
+    
+        const matchesSearch = name.includes(searchTerm);
+        const matchesCategory = categoryId === "all" || category === categoryId;
+        const matchesPrice = price <= maxPrice;
+    
+        if (matchesSearch && matchesCategory && matchesPrice) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+    
+    // Update price label dynamically
+    priceRange.addEventListener("input", () => {
+      priceRangeLabel.textContent = `0 - ${priceRange.value}`;
+      filterProducts();
+    });
+    
+    searchInput.addEventListener("input", filterProducts);
+    categorySelect.addEventListener("change", filterProducts);
+    </script>
+    

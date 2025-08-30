@@ -1,0 +1,37 @@
+{% extends 'member/base.html' %} {% load static %} {% block content%}
+
+<section>
+  <div class="container">
+    <div
+      class="wrap common-card col-lg-6 col-md-10 col-sm-12 col-12 mx-auto text-center"
+    >
+      <h2 class="p-0 mb-4">Membership — ₹{{ price_rupees }}/month</h2>
+      {% if is_active %}
+      <button class="ok btn btn-success my-4 px-4 py-2">Status: Active</button>
+      <br>
+      {% if membership.expires_at %}
+      <button class="btn btn-info  px-4 py-2 text-white">
+        Valid till: {{ membership.expires_at|date:"M d, Y H:i" }}
+      </button>
+
+      {% else %}
+      <button class="btn btn-warning my-4 px-4 py-2">Valid till: Not yet activated</button>
+      {% endif %}
+      <p class="mt-4 text-success">
+        Payment success activates your membership for 30 days.
+      </p>
+      {% else %}
+      <button class="btn btn-warning my-4 text-white px-4 py-2">
+        Status: Not active
+      </button>
+      <form id="payForm" method="post" action="{% url 'member:create-order' %}">
+        {% csrf_token %}
+        <button type="submit" id="payBtn " class="btn btn-primary px-5">
+          Pay ₹{{ price_rupees }} now
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

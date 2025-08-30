@@ -1,0 +1,90 @@
+<!-- Footer -->
+<footer class="text-white pt-5 pb-3 section-gradient" role="contentinfo" aria-label="Website Footer">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <!-- Brand and About -->
+      <div class="col-md-4">
+        <h5 class="fw-bold">
+          <i class="bi bi-phone text-info" aria-hidden="true"></i>
+          {{ footer.brand_name|default:"Brand" }} 
+          <span class="text-info">{{ footer.brand_highlight }}</span>
+        </h5>
+        <p class="small mb-0 pt-2" aria-label="About FolderFix">
+          <i class="bi bi-info-circle me-1" aria-hidden="true"></i>{{ footer.about_text }}
+        </p>
+      </div>
+
+      <!-- Link Sections -->
+      {% for section in footer.sections.all|dictsort:"order" %}
+      <div class="col-md-2">
+        <h6 class="fw-bold mb-3">
+          <i class="bi bi-link-45deg me-1 text-info fw-bold" aria-hidden="true"></i>{{ section.title }}
+        </h6>
+        <ul class="list-unstyled small" aria-label="{{ section.title }}">
+          {% for link in section.links.all|dictsort:"order" %}
+            <li class="mt-2">
+              <a href="{{ link.url }}" 
+                 class="text-white text-decoration-none"
+                 title="{{ link.name }} | FolderFix"
+                 aria-label="{{ link.name }}">
+                <i class="bi bi-chevron-right small me-1" aria-hidden="true"></i>{{ link.name }}
+              </a>
+            </li>
+          {% empty %}
+            <li><span class="text-white-50"><i class="bi bi-dash-circle me-1" aria-hidden="true"></i>No links yet</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+
+      <!-- Newsletter + Socials -->
+      <div class="col-md-4">
+        <h6 class="fw-bold mb-3">
+          <i class="bi bi-link-45deg me-1 fw-bold text-info" aria-hidden="true"></i>Stay Connected
+        </h6>
+
+        {% if footer.newsletter and footer.newsletter.enabled %}
+        <form class="d-flex mb-3" method="post" action="" aria-label="Newsletter Subscription">
+          {% csrf_token %}
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="bi bi-envelope-fill" aria-hidden="true"></i></span>
+            <input type="email" 
+                   name="email" 
+                   class="form-control" 
+                   placeholder="Enter your email" 
+                   aria-label="Enter your email to subscribe" 
+                   required>
+            <button class="btn btn-danger" aria-label="Subscribe to Newsletter">{{ footer.newsletter.button_text }}</button>
+          </div>
+        </form>
+        <small class="d-block text-light">
+          <i class="bi bi-shield-check me-1" aria-hidden="true"></i>{{ footer.newsletter.disclaimer|safe }}
+        </small>
+        {% endif %}
+
+        <div class="d-flex gap-3 mt-3" aria-label="Social Links">
+          {% for s in footer.social_links.all|dictsort:"order" %}
+            <a href="{{ s.url }}" 
+               class="text-white fs-5" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               title="{{ s.platform }} - Follow us"
+               aria-label="Follow us on {{ s.platform }}">
+              <i class="{{ s.icon_class }}" aria-hidden="true"></i>
+            </a>
+          {% empty %}
+            <span class="text-white-50 small">
+              <i class="bi bi-plus-circle me-1" aria-hidden="true"></i>Add social links in Admin
+            </span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <hr class="w-100">
+    <div class="text-center mt-4">
+      <p>{{ footer.copyright_text|safe }}</p>
+    </div>
+  </div>
+</footer>

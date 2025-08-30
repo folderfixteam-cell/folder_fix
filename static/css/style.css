@@ -1,0 +1,546 @@
+/* ==============================
+   1. RESET & BASE VARIABLES
+============================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Fonts */
+    --font-primary: "Sora", sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Backgrounds */
+    --bg-gradient: linear-gradient(120deg, #8e2de2, #4a00e0);
+    --bg-section: linear-gradient(120deg, #8e2de2, #4a00e0);
+    --bg-body: #edeff1;
+
+    /* Font weights */
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+    /* Border radius */
+    --br: 15px;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-primary) !important;
+    font-weight: var(--fw-regular);
+    font-style: normal;
+    line-height: 1.6;
+    color: #333;
+    background: var(--bg-body) !important;
+    scroll-behavior: smooth;
+}
+
+
+/* ==============================
+   2. ALERT STYLES
+============================== */
+
+
+
+
+
+
+
+
+
+/* ==============================
+   3. SECTIONS (GENERIC)
+============================== */
+.section-gradient {
+    background: var(--bg-section);
+}
+
+section {
+    padding: 90px 0px !important;
+    min-height: 80vh !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 992px) {
+    section {
+        padding: 50px 15px !important;
+        min-height: 50vh !important;
+    }
+}
+
+@media (max-width: 576px) {
+    section {
+        padding: 40px 10px !important;
+        min-height: auto !important;
+    }
+}
+
+
+/* ==============================
+   4. BUTTONS
+============================== */
+.btn.btn-primary,
+#mainNavbar .btn.btn-primary {
+    background-image: linear-gradient(45deg, #0d6efd, #6610f2);
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 30px;
+    transition: transform .18s ease, filter .2s ease;
+}
+
+.btn.btn-primary:hover,
+#mainNavbar .btn.btn-primary:hover {
+    background-image: linear-gradient(45deg, #0b5ed7, #520dc2);
+    transform: translateY(-2px);
+    filter: brightness(1.02);
+}
+
+#mainNavbar .btn.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .18);
+}
+
+.br-custom {
+    border-radius: var(--br);
+}
+
+
+/* ==============================
+   5. NAVBAR
+============================== */
+#mainNavbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    transition: background-color .3s ease, box-shadow .3s ease;
+    -webkit-transition: background-color .3s ease, box-shadow .3s ease;
+    -moz-transition: background-color .3s ease, box-shadow .3s ease;
+    -o-transition: background-color .3s ease, box-shadow .3s ease;
+}
+
+#mainNavbar.navbar-scroll {
+    background-color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .10);
+}
+
+#mainNavbar .navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: .4px;
+    color: #222222;
+}
+
+#mainNavbar .navbar-brand .text-primary {
+    color: #0d6efd !important;
+}
+
+#mainNavbar .navbar-toggler {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+}
+
+#mainNavbar .nav-link {
+    position: relative;
+    font-weight: 500;
+    color: #2b2b2b;
+    padding: .6rem 1rem;
+    border-radius: .35rem;
+    transition: color .3s ease, background-color .3s ease;
+}
+
+#mainNavbar .nav-link:hover,
+#mainNavbar .nav-link:focus {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, .08);
+}
+
+#mainNavbar .nav-link.active {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+#mainNavbar .nav-link:active {
+    background-color: rgba(13, 110, 253, .12);
+    color: #0d6efd;
+}
+
+#mainNavbar .dropdown-menu {
+    border: none;
+    border-radius: .6rem;
+    padding: .5rem;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .12);
+}
+
+#mainNavbar .dropdown-item {
+    border-radius: .4rem;
+    font-weight: 500;
+    padding: .55rem .75rem;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+#mainNavbar .dropdown-item:hover,
+#mainNavbar .dropdown-item:focus {
+    background-color: #f1f6ff;
+    color: #0d6efd;
+}
+
+#mainNavbar .dropdown-menu-end {
+    right: 0;
+    left: auto;
+}
+
+@media (max-width: 991.98px) {
+    #mainNavbar .dropdown-item {
+        padding: .7rem .85rem;
+    }
+}
+
+
+/* ==============================
+   6. HOME / HERO
+============================== */
+.hero .hero-bg {
+    z-index: 0;
+}
+
+.hero .hero-overlay {
+    z-index: 1;
+}
+
+.hero .container {
+    z-index: 2;
+}
+
+.marquee-container {
+    overflow: hidden;
+    position: relative;
+    max-height: 500px;
+}
+
+.marquee-content {
+    display: flex;
+    flex-direction: column;
+    animation: scroll-up 15s linear infinite;
+}
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+
+/* ==============================
+   7. ABOUT / SERVICES / TEAM
+============================== */
+
+
+.common-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 18px;
+    box-shadow: 0 10px 24px rgba(16, 24, 40, .06);
+    transition: .25s ease;
+}
+
+.common-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(16, 24, 40, .10);
+}
+
+/* Icons */
+.common-icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 auto;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .12);
+}
+
+.common-icon[data-color="green"] {
+    background: linear-gradient(135deg, #00c07a, #00a06e);
+}
+
+.common-icon[data-color="pink"] {
+    background: linear-gradient(135deg, #ff6aa2, #ff4e78);
+}
+
+.common-icon[data-color="blue"] {
+    background: linear-gradient(135deg, #4aa3ff, #2b7cff);
+}
+
+.common-icon[data-color="purple"] {
+    background: linear-gradient(135deg, #7d6bff, #5a46ff);
+}
+
+/* Team */
+.team-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(16, 24, 40, .06);
+    transition: .25s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(16, 24, 40, .12);
+}
+
+.team-photo {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: #eef2f7;
+    overflow: hidden;
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.role-badge {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .08);
+}
+
+.badge-analyst {
+    background: #1fb6ff;
+}
+
+.badge-designer {
+    background: #22c55e;
+}
+
+.badge-developer {
+    background: #f59e0b;
+}
+
+.badge-marketer {
+    background: #ef4444;
+}
+
+.team-body {
+    padding: 18px;
+}
+
+.team-body h5 {
+    font-weight: 700;
+}
+
+.social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #f6f7fb;
+    margin-right: 8px;
+    font-size: 16px;
+    color: #334155;
+    transition: .2s;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .04);
+}
+
+.social a:hover {
+    background: #e9eef9;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   8. CONTACT
+============================== */
+.map-section iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+}
+
+
+/* ==============================
+   9. LISTS (Combo & Contact)
+============================== */
+.combo-card {
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .05);
+    transition: all 0.3s ease;
+}
+
+.combo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+    border-color: #0d6efd;
+}
+
+.combo-card p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.highlight {
+    background-color: yellow;
+    border-radius: 4px;
+    padding: 0 3px;
+}
+
+.not-found {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #dc3545;
+}
+
+#searchBox {
+    max-width: 100%;
+    margin: auto;
+}
+
+
+/* ==============================
+   10. FOOTER
+============================== */
+footer {
+    background: var(--bg-gradient);
+    color: #ffffff;
+}
+
+footer a {
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease, text-decoration 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+footer a:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ==============================
+   11. ADMIN DASHBOARD
+============================== */
+.sidebar {
+    min-height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #dee2e6;
+    position: fixed;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.sidebar .nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.account-btn {
+    margin-top: auto;
+    text-align: center;
+}
+
+main {
+    margin-left: 240px;
+    padding: 2rem;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+
+/* ==============================
+   12. ERROR PAGES
+============================== */
+.error-404 {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.error-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 3rem 2rem;
+    max-width: 600px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.error-404 h1 {
+    font-size: 7rem;
+    background: linear-gradient(45deg, #ff4d4d, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

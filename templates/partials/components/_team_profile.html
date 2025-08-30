@@ -1,0 +1,31 @@
+<!-- Photo & Role -->
+<div class="team-photo position-relative">
+  {% if member.photo %}
+  <img
+    src="{{ member.photo.url }}"
+    alt="{{ member.full_name }} — {{ member.title }}"
+    loading="lazy"
+    class="img-fluid rounded-3"
+    width="800"
+    height="700"
+    itemprop="image"
+  />
+  {% else %}
+  <img
+    src="https://picsum.photos/800/600?blur=3"
+    alt="{{ member.full_name }} — {{ member.title }}"
+    loading="lazy"
+    class="img-fluid rounded-3"
+    width="800"
+    height="600"
+    itemprop="image"
+  />
+  {% endif %} {% if member.role %}
+  <span
+    class="role-badge {{ member.role.badge_class|default:'badge-analyst' }}"
+    itemprop="jobTitle"
+  >
+    {{ member.role.name }}
+  </span>
+  {% endif %}
+</div>

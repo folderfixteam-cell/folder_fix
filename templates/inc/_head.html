@@ -1,0 +1,241 @@
+{% load static %} {% block meta_base %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Primary SEO -->
+<meta
+  name="description"
+  content="{% block meta_description %}FolderFix provides genuine mobile folders, universal combo lists, OCA glass, batteries, frames, CC boards, and repair components for shops & technicians. Explore brand-wise and category-wise parts with fast support.{% endblock %}"
+/>
+<meta
+  name="keywords"
+  content="FolderFix, universal combo list, mobile folder, display combo, OCA glass, mobile batteries, frames, CC board, repair parts, mobile repairing components, HP+, HD+ folders, universal combos, parts combo list, Krishna Mobile Shop, Mankapur Gonda"
+/>
+<meta name="author" content="FolderFix" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#0d6efd" />
+<meta name="robots" content="noindex, nofollow" />
+<!-- Canonical -->
+<link
+  rel="canonical"
+  href="{% block canonical %}{{ request.build_absolute_uri|cut:'?'}}{% endblock %}"
+/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="{% block og_type %}website{% endblock %}" />
+<meta property="og:site_name" content="FolderFix" />
+<meta
+  property="og:title"
+  content="{% block og_title %}FolderFix — Mobile Folder & Universal Combo Lists{% endblock %}"
+/>
+<meta
+  property="og:description"
+  content="{% block og_description %}Find brand-wise universal combos, display folders, OCA glass, batteries, and repair components at FolderFix.{% endblock %}"
+/>
+<meta property="og:url" content="{{ request.build_absolute_uri|cut:'?'}}" />
+<meta
+  property="og:image"
+  content="{% block og_image %}{% static 'img/og/folderfix-og.jpg' %}{% endblock %}"
+/>
+<meta
+  property="og:image:alt"
+  content="FolderFix — Mobile Repair Parts & Universal Combo Lists"
+/>
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta
+  name="twitter:title"
+  content="{% block tw_title %}FolderFix — Mobile Folder & Universal Combo Lists{% endblock %}"
+/>
+<meta
+  name="twitter:description"
+  content="{% block tw_desc %}Explore universal combo lists, mobile display folders, and parts for repair professionals.{% endblock %}"
+/>
+<meta
+  name="twitter:image"
+  content="{% block tw_image %}{% static 'img/og/folderfix-og.jpg' %}{% endblock %}"
+/>
+{% endblock %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Jost:ital,wght@0,100..900;1,100..900&family=Nata+Sans:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sora:wght@100..800&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Favicon & Fonts -->
+<link
+  rel="shortcut icon"
+  href="{% static 'img/favicon.ico' %}"
+  type="image/x-icon"
+  sizes="32x32"
+/>
+
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  href="{% static 'css/style.css' %}"
+  type="text/css"
+  media="all"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link
+  rel="stylesheet"
+  href="{% static 'css/bootstrap.css' %}"
+  type="text/css"
+  media="all"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+
+<!-- Bootstrap CSS (required) -->
+
+
+<!-- Scripts (defer non-critical) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+
+{# ---------- JSON-LD (Organization & WebSite) ---------- #}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FolderFix",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/logo-512.png' %}",
+    "sameAs": [
+      {% if footer and footer.social_links.all %}{% for s in footer.social_links.all %}
+      "{{ s.url }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}{% endif %}
+    ],
+    "description": "Mobile repairing components and universal combo lists: display folders, OCA glass, batteries, frames, CC boards.",
+    "areaServed": "IN",
+    "brand": { "@type": "Brand", "name": "FolderFix" }
+  }
+</script>
+
+{# ---------- JSON-LD (Default page as WebSite) ---------- #}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "FolderFix",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ request.scheme }}://{{ request.get_host }}/search?q={query}",
+      "query-input": "required name=query"
+    }
+  }
+</script>
+{% if faqs %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for faq in faqs %}
+      {
+        "@type": "Question",
+        "name": "{{ faq.question|striptags|escapejs }}",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{ faq.answer|striptags|linebreaksbr|escapejs }}"
+        }
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+</script>
+{# JSON-LD: Terms page + breadcrumbs #}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Terms & Conditions",
+    "url": "{{ request.build_absolute_uri|default:'' }}",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "{{ site_name|default:'FolderFix' }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}"
+    },
+    "dateModified": "{{ terms_last_updated|date:'Y-m-d' }}",
+    "mainEntity": {
+      "@type": "TermsOfService",
+      "name": "Terms & Conditions",
+      "url": "{{ request.build_absolute_uri|default:'' }}"
+    }
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ request.scheme }}://{{ request.get_host }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Terms & Conditions",
+        "item": "{{ request.build_absolute_uri|default:'' }}"
+      }
+    ]
+  }
+</script>
+
+{# JSON-LD: WebPage + Breadcrumbs #}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "url": "{{ request.build_absolute_uri|default:'' }}",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "{{ site_name|default:'FolderFix' }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}"
+    },
+    "dateModified": "{{ privacy_last_updated|date:'Y-m-d' }}",
+    "mainEntity": {
+      "@type": "PrivacyPolicy",
+      "name": "Privacy Policy",
+      "url": "{{ request.build_absolute_uri|default:'' }}"
+    }
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ request.scheme }}://{{ request.get_host }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "{{ request.build_absolute_uri|default:'' }}"
+      }
+    ]
+  }
+</script>
+
+{% endif %} {# ---------- Optional: Page-specific blocks you can override
+---------- #} {% block page_schema %}{% endblock %}

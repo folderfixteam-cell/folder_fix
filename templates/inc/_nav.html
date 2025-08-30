@@ -1,0 +1,160 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 shadow-sm bg-white" id="mainNavbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    {% if nav_title %}
+
+      <a class="navbar-brand" href="/" title="{{nav_title}}{{nav_marker}} Home" aria-label="{{nav_title}}{{nav_marker}} Homepage" style="font-size:20px !important">
+        <i class="bi bi-phone text-primary me-1 d-lg-inline-block d-none" aria-hidden="true"></i>
+        {{nav_title}}<span class="text-primary"> {{nav_marker}}</span>
+      </a>
+
+    
+    {% else %}
+<!-- Brand Logo -->
+<a class="navbar-brand fw-bold" href="/" title="FolderFix Home" aria-label="FolderFix Homepage">
+  <i class="bi bi-phone text-primary me-1" aria-hidden="true"></i>
+  Folder<span class="text-primary"> Fix</span>
+</a>
+    {% endif %}
+    
+
+    <!-- Mobile Toggle -->
+    <button
+      class="navbar-toggler shadow-none border-0 text-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+
+        {% for nav_link in nav_links %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ nav_link.url }}" title="{{ nav_link.title }} | FolderFix" aria-label="{{ nav_link.title }}">
+            <i class="bi bi-link-45deg text-primary me-1" aria-hidden="true"></i>{{ nav_link.title }}
+          </a>
+        </li>
+        {% endfor %}
+
+        <!-- Categories dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="categoriesDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            title="Browse Categories"
+            aria-label="Browse Categories"
+          >
+            <i class="bi bi-grid text-primary me-1" aria-hidden="true"></i>Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="categoriesDropdown">
+            {% for category in categories %}
+            <li>
+              <a class="dropdown-item" href="/cate-list/{{ category.slug }}" title="{{ category.name }} Combos" aria-label="Category {{ category.name }}">
+                <i class="bi bi-link-45deg text-primary me-2" aria-hidden="true"></i>{{ category.name }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <!-- Account Dropdown for small screens -->
+        <li class="nav-item dropdown d-lg-none">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="User Account">
+            <i class="bi bi-person-circle me-1" aria-hidden="true"></i>
+            {% if request.user.is_authenticated %}
+              {{ request.user.first_name }}
+            {% else %}
+              Account
+            {% endif %}
+          </a>
+          <ul class="dropdown-menu">
+            {% if request.user.is_authenticated %}
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:dashboard' %}" title="Dashboard" aria-label="Go to Dashboard">
+                  <i class="bi bi-speedometer2 text-primary me-2" aria-hidden="true"></i>Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:logout' %}" title="Logout" aria-label="Logout">
+                  <i class="bi bi-box-arrow-right text-primary me-2" aria-hidden="true"></i>Logout
+                </a>
+              </li>
+            {% else %}
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:login' %}" title="Login" aria-label="Login to your account">
+                  <i class="bi bi-box-arrow-in-right text-primary me-2" aria-hidden="true"></i>Login
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:signup' %}" title="Sign Up" aria-label="Create a new account">
+                  <i class="bi bi-person-plus text-primary me-2" aria-hidden="true"></i>Sign Up
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </li>
+
+        <!-- Account Button for large screens -->
+        <li class="nav-item d-none d-lg-block ms-3">
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-primary rounded-2 m-0"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-label="User Account"
+            >
+              <i class="bi bi-person-circle me-1" aria-hidden="true"></i>
+              {% if request.user.is_authenticated %}
+                {{ request.user.first_name }}
+              {% else %}
+                Account
+              {% endif %}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              {% if request.user.is_authenticated %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:dashboard' %}" title="Dashboard" aria-label="Go to Dashboard">
+                    <i class="bi bi-speedometer2 text-primary me-2" aria-hidden="true"></i>Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:logout' %}" title="Logout" aria-label="Logout">
+                    <i class="bi bi-box-arrow-right text-primary me-2" aria-hidden="true"></i>Logout
+                  </a>
+                </li>
+              {% else %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:login' %}" title="Login" aria-label="Login to your account">
+                    <i class="bi bi-box-arrow-in-right text-primary me-2" aria-hidden="true"></i>Login
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:signup' %}" title="Sign Up" aria-label="Create a new account">
+                    <i class="bi bi-person-plus text-primary me-2" aria-hidden="true"></i>Sign Up
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+
+  </div>
+</nav>

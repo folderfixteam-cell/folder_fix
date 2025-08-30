@@ -1,0 +1,63 @@
+<!-- templates/accounts/verify_email.html -->
+{% extends "accounts/base.html" %}
+{% block title %}Folder Fix - Verify Email{% endblock %}
+
+{% block content %}
+<section class="pt-5 container-fluid" role="region" aria-labelledby="verifyEmailTitle">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="common-card shadow-sm">
+          <div class="card-body p-4">
+
+            <!-- Title -->
+            <h4 class="mb-3 text-center fw-bold" id="verifyEmailTitle">
+              <i class="bi bi-shield-lock-fill text-primary me-2" aria-hidden="true"></i>
+              Verify your email
+            </h4>
+
+            <!-- Info text -->
+            <p class="mb-4 text-center">
+              We sent an OTP to 
+              <strong class="text-danger">{{ user.email }}</strong>.  
+              It expires in <span class="fw-semibold">{{ settings.OTP_EXPIRY_MINUTES|default:10 }}</span> minutes.
+            </p>
+
+            <!-- OTP Form -->
+            <form method="post" class="mb-3" role="form" aria-label="Email verification form">
+              {% csrf_token %}
+              <div class="mb-3 form-group">
+                <label for="{{ form.otp.id_for_label }}" class="form-label fw-semibold">
+                  <i class="bi bi-key-fill text-primary me-1" aria-hidden="true"></i>
+                  Enter OTP
+                </label>
+                {{ form.otp }}
+                {% if form.otp.errors %}
+                  <div class="text-danger small mt-1" role="alert">
+                    <i class="bi bi-exclamation-circle me-1" aria-hidden="true"></i>
+                    {{ form.otp.errors|striptags }}
+                  </div>
+                {% endif %}
+              </div>
+              <button class="btn btn-primary w-100" aria-label="Verify OTP">
+                <i class="bi bi-check-circle-fill me-2" aria-hidden="true"></i>
+                Verify
+              </button>
+            </form>
+
+            <!-- Resend OTP -->
+            <form method="post" action="{% url 'accounts:resend-otp' user.id %}" role="form" aria-label="Resend OTP form">
+              {% csrf_token %}
+              <button class="btn btn-outline-danger w-100 mt-2" aria-label="Resend OTP">
+                <i class="bi bi-arrow-repeat me-2" aria-hidden="true"></i>
+                Resend OTP
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

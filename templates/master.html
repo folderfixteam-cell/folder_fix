@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+
+    <title>{% block title %} Folder Fix - Home Page {% endblock %}</title>
+
+    {% include 'inc/_head.html' %} {% endblock %}
+    <style>
+      .mark{
+        color: #007bff; 
+        background-color:inherit; /* Blue */
+      }
+    </style>
+  </head>
+
+  <body class="bg-light">
+    {% include "inc/_alert.html" %}
+    {% block base %} 
+  
+    {% endblock %} 
+    {% include "inc/_whatsapp.html" %}
+    {% include 'inc/_script.html' %}
+
+  </body>
+</html>

@@ -1,0 +1,13 @@
+🔒 Hello {{ user.first_name|default:user.username }},
+
+Your one-time password (OTP) for {{ site_name }} ({{ purpose }}) is:
+
+=======================
+        {{ otp }}
+=======================
+
+⏰ This code will expire in {{ minutes }} minute(s).
+
+If you did not request this, you can safely ignore this email.
+
+— {{ site_name }} Team

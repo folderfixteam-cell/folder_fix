@@ -1,0 +1,58 @@
+<section
+  class="hero position-relative overflow-hidden bg-gradient"
+  id="hero"
+  role="banner"
+  aria-label="{{ hero.title|default:'FolderFix – Mobile Repair Solutions' }}"
+  style="min-height: 100dvh;"
+>
+  <!-- Background -->
+  <div
+    class="hero-bg position-absolute top-0 start-0 w-100 h-100"
+    style="
+      {% if hero.bg_image %}
+        background-image:
+          linear-gradient(90deg, {{ hero.bg_gradient_from|default:'#0d6efd' }}, {{ hero.bg_gradient_to|default:'#6610f2' }}),
+          url('{{ hero.bg_image.url }}');
+      {% else %}
+        background-image:
+          linear-gradient(90deg, {{ hero.bg_gradient_from|default:'#0d6efd' }}, {{ hero.bg_gradient_to|default:'#6610f2' }});
+      {% endif %}
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    "
+  ></div>
+
+  {% if hero.bg_image %}
+  <div
+    class="hero-overlay position-absolute top-0 start-0 w-100 h-100"
+    style="background: rgba(0,0,0, {{ hero.bg_overlay_opacity|default:0.35 }});"
+    aria-hidden="true"
+  ></div>
+  {% endif %}
+
+  <!-- Content -->
+  <div class="container position-relative py-5 mt-3 text-center text-white">
+    <!-- Title with responsive display -->
+    <h1 class="fw-bold mb-3 lh-base  display-5">
+      {{ hero.title|default:"FolderFix – Inside the Screen" }}
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="mb-4 lh-base fs-6 fs-md-5">
+      {{ hero.subtitle|default:"Universal mobile folders, combos, and repair essentials for shops & technicians." }}
+    </p>
+
+    <!-- Call-to-Action -->
+    <a
+      href="{{ hero.cta_url|default:'#combos' }}"
+      class="btn btn-light btn-lg mt-3 px-4 py-2 shadow"
+      title="{{ hero.cta_text|default:'Explore Brands' }} | FolderFix"
+      aria-label="{{ hero.cta_text|default:'Explore Brands' }}"
+    >
+      <i class="bi bi-lightning-charge-fill text-warning me-2" aria-hidden="true"></i>
+      {{ hero.cta_text|default:"Explore Brands" }}
+      <i class="bi bi-arrow-right-circle ms-2" aria-hidden="true"></i>
+    </a>
+  </div>
+</section>

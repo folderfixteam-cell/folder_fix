@@ -1,0 +1,30 @@
+
+{% if messages %}
+  {% for message in messages %}
+    <div
+      class="modal fade"
+      id="msgModal{{ forloop.counter }}"
+      tabindex="-1"
+      aria-hidden="true"
+      data-autoshow="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content rounded-3 shadow">
+          <div class="modal-header text-white 
+            {% if 'error' in message.tags %}bg-danger
+            {% elif 'success' in message.tags %}bg-success
+            {% elif 'warning' in message.tags %}bg-warning
+            {% elif 'info' in message.tags %}bg-info
+            {% else %}bg-danger{% endif %}">
+            <h5 class="modal-title text-white"> <i class="bi bi-bell me-2"></i> Notification</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{ message }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+

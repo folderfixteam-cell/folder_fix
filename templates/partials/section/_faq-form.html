@@ -1,0 +1,40 @@
+<section class="py-5" role="region" aria-labelledby="askQuestionTitle">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col common-card p-4 shadow-sm">
+        <h4 class="fw-bold mb-2" id="askQuestionTitle">
+          Ask Your Question
+        </h4>
+        <p class="text-muted small mb-4" id="askQuestionHelp">
+          Have a doubt? Write your question below — our team will answer it soon and publish common answers in the FAQ section.
+        </p>
+
+        {% include "inc/_alert.html" %}
+
+        <form method="post" role="form" aria-labelledby="askQuestionTitle" aria-describedby="askQuestionHelp">
+          {% csrf_token %}
+          <div class="row align-items-center g-2">
+            <div class="col-10">
+              <label for="{{ form.question.id_for_label }}" class="visually-hidden">Your Question</label>
+              {{ form.question }}
+              {% if form.question.errors %}
+                <div class="text-danger small mt-1" role="alert">
+                  <i class="bi bi-x-circle me-1" aria-hidden="true"></i>{{ form.question.errors|striptags }}
+                </div>
+              {% endif %}
+            </div>
+            <div class="col-2 d-grid">
+              <button class="btn btn-primary px-4" aria-label="Send your question">
+                <i class="bi bi-send-fill me-1" aria-hidden="true"></i>Send
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <p class="small text-secondary mt-3" id="askQuestionNote">
+          💡 Please keep your question clear and concise. Your email won’t be displayed publicly.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+
+<!-- Combo List -->
+<section class="py-5 section-gradient">
+  <div class="container mt-4 py-5">
+    <div class="row">
+      <div class="col common-card p-lg-4 p-2 shadow-sm sticky-top">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+          <h4 class="fw-bold m-0">
+            <i class="bi bi-layers-fill text-primary me-2"></i>
+            Universal <span class="text-primary text-capitalize">{{ slug }}</span> Combo List
+          </h4>
+          <div class="d-flex align-items-center gap-2">
+            <button type="button" class="btn btn-outline-primary btn-sm my-3 mt-lg-0" id="copyVisibleBtn">
+              <span>
+                <span id="resultCount"> <i class="bi bi-clipboard"></i> {{ combo_list|length }}</span> models
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="position-relative mx-auto">
+          <input type="text" id="searchBox" class="form-control p-3 shadow-sm ps-5"
+                 placeholder="🔍 Type to search... e.g., Realme 8, Narzo 30 (use commas for multiple)" />
+          <div class="form-text mt-3 ps-1">Tip: search matches both <b>Main Model</b> and <b>Compatible Models</b>. Multiple keywords allowed.</div>
+        </div>
+
+        <div id="comboList" class="row g-3 mt-4 m-0 ">
+          {% for combo in combo_list %}
+          <div class="col-12 combo-item p-0"
+               data-main="{{ combo.main_model|lower }}"
+               data-combos="{{ combo.compatible_models|lower }}"
+               data-line="{{ combo.main_model }} : {{ combo.compatible_models }}">
+            <div class="card p-lg-4 p-2 combo-card">
+              <div class="d-flex justify-content-between align-items-start gap-2">
+                <p class="card-text text-uppercase m-0">
+                  <span class="text-primary fw-semibold main-model"
+                        data-original="{{ combo.main_model }}">{{ combo.main_model }}</span>
+                  <span class="text-muted"> : </span>
+                  <span class="compatibles"
+                        data-original="{{ combo.compatible_models }}">{{ combo.compatible_models }}</span>
+                </p>
+                
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12 p-0">
+            <div class="card p-lg-4 p-2 combo-card">
+              <p class="card-text mb-3">
+                <i class="bi bi-exclamation-triangle-fill m-0 text-warning fs-3 p-2"></i>
+                No models available right now. Please check back later.
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Not Found Message -->
+        <div id="notFound" class="not-found p-3 fs-6 fw-semibold bg-danger text-white d-none rounded-2 mt-3">
+          No models found for your search.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
