@@ -1,0 +1,19 @@
+<!-- Why Choose Us -->
+<section id="why-choose-us" class="why-choose-us" role="region" aria-labelledby="whyChooseTitle">
+  <div class="container pb-5">
+    {% include "partials/components/choose-us-section-title.html" with choose_title=choose_title %}
+
+    <div class="row g-4 mt-lg-5 pb-lg-5" role="list" aria-label="Reasons to choose FolderFix">
+      {% for choose in choose_us %}
+      {% include "partials/components/choose-us-card.html" %}
+      {% empty %}
+      <div class="col-12 text-center">
+        <p class="text-muted small" role="status">
+          <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+          No items available right now.
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

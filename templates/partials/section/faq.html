@@ -1,0 +1,18 @@
+<!-- FAQ Section -->
+<section id="faqs" role="region" aria-labelledby="faqSectionTitle">
+  <div class="container pb-5">
+    {% include "partials/components/faq-section-title.html" %}
+    {# FAQ Accordion #}
+    {% if faqs %}
+      <div class="accordion" id="faqAccordion" role="list" aria-label="FAQ list">
+        {% for faq in faqs %}
+          {% include "partials/components/faq-card.html" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-center text-muted small" role="status">
+        <i class="bi bi-info-circle me-1"></i>No FAQs available right now.
+      </div>
+    {% endif %}
+  </div>
+</section>

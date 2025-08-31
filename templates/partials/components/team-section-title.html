@@ -1,0 +1,16 @@
+{% if team_title %} 
+{% include "partials/components/section-title.html" with title=team_title.heading description=team_title.subtitle section_id="teamSectionTitle" title_text_class="text-primary" %} 
+{% else %}
+<hgroup class="text-center mb-5">
+  <h3
+    class="text-center text-uppercase lh-base fw-bold mb-3"
+    style="letter-spacing: 1.5px"
+  >
+    Meet Our Team
+  </h3>
+  <h2 class="fw-bold lh-base" style="letter-spacing: 1.5px">
+    People Behind Folder Fix
+  </h2>
+</hgroup>
+
+{% endif %}

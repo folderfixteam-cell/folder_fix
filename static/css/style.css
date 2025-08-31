@@ -17,7 +17,8 @@
     /* Backgrounds */
     --bg-gradient: linear-gradient(120deg, #8e2de2, #4a00e0);
     --bg-section: linear-gradient(120deg, #8e2de2, #4a00e0);
-    --bg-body: #edeff1;
+    --bg-2: linear-gradient(135deg, #e8f0ff, #ffffff);
+
 
     /* Font weights */
     --fw-regular: 400;
@@ -40,21 +41,9 @@ body {
     font-style: normal;
     line-height: 1.6;
     color: #333;
-    background: var(--bg-body) !important;
+    background: var(--bg-2) !important;
     scroll-behavior: smooth;
 }
-
-
-/* ==============================
-   2. ALERT STYLES
-============================== */
-
-
-
-
-
-
-
 
 
 /* ==============================
@@ -435,6 +424,37 @@ section {
 }
 
 
+
+/* ==============================
+   2. SHOP STYLES
+============================== */
+
+
+
+
+
+.mark {
+    color: #007bff;
+    background-color: inherit;
+    /* Blue */
+}
+
+.filters {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filters label {
+    font-size: 14px;
+    color: #333;
+}
+
+.filters input[type="range"] {
+    cursor: pointer;
+}
+
+
 /* ==============================
    10. FOOTER
 ============================== */
@@ -463,47 +483,6 @@ footer a:active {
 /* ==============================
    11. ADMIN DASHBOARD
 ============================== */
-.sidebar {
-    min-height: 100vh;
-    background-color: #fff;
-    border-right: 1px solid #dee2e6;
-    position: fixed;
-    width: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem 0.5rem;
-}
-
-.sidebar .nav-link {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.sidebar .nav-link.active {
-    background-color: #0d6efd;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.account-btn {
-    margin-top: auto;
-    text-align: center;
-}
-
-main {
-    margin-left: 240px;
-    padding: 2rem;
-}
-
-.card {
-    border-radius: 15px;
-}
-
-.chart-container {
-    position: relative;
-    height: 300px;
-}
 
 
 /* ==============================

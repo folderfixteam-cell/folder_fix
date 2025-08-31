@@ -15,7 +15,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
+from django.contrib.sitemaps.views import sitemap
+from .sitemap import StaticViewSitemap, ComboSitemap, CategorySitemap
 
+sitemaps = {
+    "static": StaticViewSitemap,
+    "combo": ComboSitemap,
+    "category": CategorySitemap,
+}
 
 
 
@@ -25,7 +32,9 @@ urlpatterns = [
     path("", include(("app.urls","app"),namespace="app")),
     path("accounts/", include(("accounts.urls", "accounts"), namespace="accounts")),
     path("member/", include(("member.urls","member"),namespace="member")),
-    path("shop/", include(("shop.urls","shop"), namespace="shop"))
+    path("shop/", include(("shop.urls","shop"), namespace="shop")),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
+   
 ]
 
 handler404 = "app.views.Handler404View"

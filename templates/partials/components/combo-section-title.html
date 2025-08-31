@@ -1,0 +1,19 @@
+  {% if combo_title %}
+    {% include "partials/components/section-title.html" with title=combo_title.heading description=combo_title.subtitle section_id="comboSectionTitle" title_text_class="text-primary" sub_title_text_class="" %}
+    {% else %}
+<hgroup class="text-center mb-5">
+  <h3
+    class="text-center text-uppercase  lh-base fw-bold mb-3"
+    style="letter-spacing: 1.5px"
+  >
+   Combos
+  </h3>
+  <h2
+    class="fw-bold lh-base "
+    style="letter-spacing: 1.5px"
+  >
+    Cniversal Combo Brand List
+  </h2>
+</hgroup>
+    
+    {% endif %}

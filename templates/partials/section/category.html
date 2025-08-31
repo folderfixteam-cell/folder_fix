@@ -1,0 +1,18 @@
+<!-- Categories Section -->
+<section id="categories" class="section-gradient" role="region" aria-labelledby="categoriesSectionTitle">
+  <div class="container pb-5">
+    {% include "partials/components/category-section-title.html" %}
+    <div class="row g-4 mt-lg-5 pb-lg-5">
+      {% for category in categories %}
+        {% include "partials/components/category-card.html" %}
+      {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted small" role="status">
+            <i class="bi bi-exclamation-circle me-1 text-warning"></i>
+            No Category Available At This Time
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

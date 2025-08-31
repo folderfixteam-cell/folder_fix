@@ -1,0 +1,16 @@
+<div class="col-12 col-sm-6 col-lg-3 px-lg-3 p-0" role="listitem">
+  <div
+    class="common-card h-100 text-center"
+    itemscope
+    itemtype="https://schema.org/ContactPoint"
+    aria-label="{{ contact.title }}"
+  >
+    <div class="common-icon" data-color="{{ contact.color.name|default:'' }}">
+      <i class="{{ contact.icon_class }}" aria-hidden="true"></i>
+    </div>
+    <h5 class="fw-semibold mt-4" itemprop="contactType">{{ contact.title }}</h5>
+    <p class="text-muted small pt-2" itemprop="description">
+      {{ contact.description }}
+    </p>
+  </div>
+</div>

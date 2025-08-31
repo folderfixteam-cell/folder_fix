@@ -1,0 +1,14 @@
+{% if choose_title %} 
+{% include "partials/components/section-title.html" with title=choose_title.heading description=choose_title.subtitle section_id="whyChooseTitle" title_text_class="text-primary"  %} 
+{% else %}
+<hgroup class="text-center mb-5">
+  <h3
+    class="text-center text-uppercase lh-base fw-bold mb-3"
+    style="letter-spacing: 1.5px"
+  >
+    Choose Us
+  </h3>
+  <h2 class="fw-bold lh-base" style="letter-spacing: 1.5px">Why Choose Us</h2>
+</hgroup>
+
+{% endif %}

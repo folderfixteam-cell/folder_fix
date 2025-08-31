@@ -1,0 +1,18 @@
+{% if title %}
+<hgroup class="text-center mb-5">
+  <h3
+    class="text-center text-uppercase {% if title_text_class %}{{ title_text_class }}{% endif %} lh-base fw-bold mb-3"
+    style="letter-spacing: 1.5px"
+  >
+    {{ title }}
+  </h3>
+  {% if description %}
+  <h2
+    class="fw-bold lh-base {% if sub_title_text_class %}{{sub_title_text_class}}{% endif %} "
+    style="letter-spacing: 1.5px"
+  >
+    {{description}}
+  </h2>
+  {% endif %}
+</hgroup>
+{% endif %}

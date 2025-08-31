@@ -1,0 +1,17 @@
+{% if feedback_title %} {% include "partials/components/section-title.html" with
+title=feedback_title.heading description=feedback_title.subtitle
+section_id="categoriesSectionTitle" title_text_class="text-white"
+sub_title_text_class="text-white" %} {% else %}
+
+<!-- Section Title -->
+<hgroup class="text-center mb-5">
+  <h3
+    class="text-center text-uppercase text-primary lh-base fw-bold mb-2"
+    style="letter-spacing: 1.5px"
+  >
+    FEDBACK
+  </h3>
+  <h2 class="fw-bold" style="letter-spacing: 1.5px">What Our Customers Say</h2>
+</hgroup>
+
+{% endif %}

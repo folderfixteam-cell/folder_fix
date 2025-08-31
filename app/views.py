@@ -12,7 +12,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, NoReverseMatch
 from django.views.decorators.http import require_http_methods
 
-from .forms import ContactForm, FAQForm,FeedbackForm
+from .forms import ContactForm, FAQForm, FeedbackForm
 from .utils import (
     get_home_context,
     get_about_context,
@@ -58,6 +58,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 @require_http_methods(["GET", "POST"])
 def home_view(request: HttpRequest) -> HttpResponse:
     try:
@@ -76,7 +77,9 @@ def home_view(request: HttpRequest) -> HttpResponse:
                     request, "✅ Thanks for your feedback! We truly appreciate it."
                 )
                 ctx["form"] = FeedbackForm()
-                return render(request, "app/index.html", ctx)  # change to your actual home URL name
+                return render(
+                    request, "app/index.html", ctx
+                )  # change to your actual home URL name
             except Exception as e:
                 logger.exception("home_view feedback save error: %s", e)
                 messages.error(
@@ -90,14 +93,6 @@ def home_view(request: HttpRequest) -> HttpResponse:
     # GET
     ctx["form"] = FeedbackForm()
     return render(request, "app/index.html", ctx)
-
-
-
-
-
-
-
-
 
 
 @require_http_methods(["GET"])
@@ -210,7 +205,8 @@ def faq_view(request: HttpRequest) -> HttpResponse:
                 with transaction.atomic():
                     form.save()
                 messages.success(
-                    request, "✅ Thanks! We’ll answer your question as soon as possible."
+                    request,
+                    "✅ Thanks! We’ll answer your question as soon as possible.",
                 )
                 return redirect(_safe_reverse("/faq", "app:faq"))
             except Exception as e:
@@ -228,11 +224,18 @@ def faq_view(request: HttpRequest) -> HttpResponse:
     return render(request, "app/faq.html", ctx)
 
 
-
-
-
-
-
-def Handler404View(request, exeption):
+def Handler404View(request, exception):  # spelling fix: 'exception' not 'exeption'
     return render(request, "errors/404.html", status=404)
 
+
+
+@require_http_methods(["GET"])
+def robots_txt(request):
+    sitemap_url = request.build_absolute_uri('/sitemap.xml')
+    content = f"""User-agent: *
+Disallow:
+
+# Sitemap location
+Sitemap: {sitemap_url}
+"""
+    return HttpResponse(content, content_type="text/plain")

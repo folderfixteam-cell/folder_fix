@@ -1,0 +1,18 @@
+<!-- Universal Combos Section -->
+<section id="combos" role="region" aria-labelledby="comboSectionTitle">
+  <div class="container pb-5">
+    {% include "partials/components/combo-section-title.html" %}
+    <div class="row g-4 mt-lg-5 pb-lg-5">
+      {% for brand in brands %}
+        {% include "partials/components/combo-card.html" %}
+      {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted small" role="status">
+            <i class="bi bi-exclamation-circle me-1 text-warning"></i>
+            No Combo Available At This Time
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

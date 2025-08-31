@@ -1,0 +1,19 @@
+<!-- Services Section -->
+<section id="services" class="section-gradient" role="region" aria-labelledby="servicesSectionTitle">
+  <div class="container pb-5">
+    {% include "partials/components/service-section-title.html" %}
+
+    <div class="row g-4 mt-lg-5 pb-lg-5" role="list" aria-label="Services offered by FolderFix">
+      {% for service in services %}
+      {% include "partials/components/service-card.html" %}
+      {% empty %}
+      <div class="col-12 text-center">
+        <p class="text-white small" role="status">
+          <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+          No services available right now.
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

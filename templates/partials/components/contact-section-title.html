@@ -1,0 +1,16 @@
+ {% if contact_title %}
+      {% include "partials/components/section-title.html" with title=contact_title.heading description=contact_title.subtitle section_id="contactSectionTitle" title_text_class="text-primary" %}
+    {% else %}
+<hgroup class="text-center mb-5">
+  <h3
+    class="text-center text-uppercase text-primary lh-base fw-bold mb-3"
+    style="letter-spacing: 1.5px"
+  >
+   Contact Us
+  </h3>
+  <h2 class="fw-bold lh-base" style="letter-spacing: 1.5px">
+    Get in touch with FolderFix 
+  </h2>
+</hgroup>
+
+{% endif %}

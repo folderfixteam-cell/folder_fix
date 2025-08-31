@@ -1,0 +1,32 @@
+{% load static %}
+
+<!-- Contact Form -->
+<section class="section-gradient" role="region" aria-labelledby="contactFormTitle">
+  <div class="container pb-5">
+    <!-- Accessible fallback title (visible to SR, unobtrusive visually) -->
+    <h2 id="contactFormTitle" class="visually-hidden">Contact FolderFix Support</h2>
+
+    <div
+      class="row common-card px-2 py-3 px-lg-0 py-lg-0 align-items-stretch  overflow-hidden"
+      aria-label="Contact form and support image"
+    >
+      <!-- Left: Image -->
+      <div class="col-lg-5 p-0">
+        <div class="h-100 overflow-hidden">
+          <img
+            src=" {% static 'img/contact-form.png' %} "
+            alt="Get support for mobile parts, universal combos, and repairs"
+            class="w-100 h-100 d-none d-lg-block object-cover rounded"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="600"
+            fetchpriority="low"
+          />
+        </div>
+      </div>
+      <!-- Right: Form -->
+      {% include "partials/components/contact-form.html" %}
+    </div>
+  </div>
+</section>

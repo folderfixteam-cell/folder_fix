@@ -5,19 +5,18 @@
 
     <title>{% block title %} Folder Fix - Home Page {% endblock %}</title>
 
-    {% include 'inc/_head.html' %} {% endblock %}
-    <style>
-      .mark{
-        color: #007bff; 
-        background-color:inherit; /* Blue */
-      }
-    </style>
+    {% include 'inc/_head.html' %} 
+    {% endblock %}
+
   </head>
 
-  <body class="bg-light">
+  <body>
     {% include "inc/_alert.html" %}
     {% block base %} 
-  
+
+
+
+   
     {% endblock %} 
     {% include "inc/_whatsapp.html" %}
     {% include 'inc/_script.html' %}

@@ -1,0 +1,19 @@
+<!-- Contact Info -->
+<section role="region" aria-labelledby="contactSectionTitle">
+  <div class="container pb-5">
+    {% include "partials/components/contact-section-title.html" %}
+    <!-- Contact Info Cards -->
+    <div class="row g-4 mt-3 pt-lg-5 pb-5" role="list" aria-label="Contact information">
+      {% for contact in contact_info %}
+        {% include "partials/components/contact-card.html" %}
+      {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted small" role="status">
+            <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+            Contact information will be added soon.
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -30,6 +30,14 @@ PRICE_RUPEES = 25
 PRICE_PAISE = PRICE_RUPEES * 100
 
 
+def _client_ip(req: HttpRequest) -> str:
+    """Get the real client IP (works behind PythonAnywhere/Nginx proxy)."""
+    xff = req.META.get("HTTP_X_FORWARDED_FOR")
+    if xff:
+        return xff.split(",")[0].strip()
+    return req.META.get("REMOTE_ADDR", "")
+
+
 def _safe_redirect(default: str, named: str, **kwargs) -> HttpResponse:
     """Helper for safe reverse() with fallback"""
     try:
@@ -49,6 +57,9 @@ def dashboard_view(request: HttpRequest) -> HttpResponse:
         logger.exception("dashboard_view error: %s", e)
         messages.error(request, "⚠️ Unable to load dashboard.")
         return redirect("/")
+
+    ip = _client_ip(request)
+    logger.info("Dashboard viewed by user %s from IP %s", request.user.username, ip)
 
     if request.method == "POST":
         form = UserUpdateForm(request.POST, instance=request.user)
@@ -99,6 +110,9 @@ def signup_view(request: HttpRequest) -> HttpResponse:
 
                     Profile.objects.get_or_create(user=user)
 
+                    ip = _client_ip(request)
+                    logger.info("New signup: %s from IP %s", user.username, ip)
+
                     otp, rec_or_err = create_or_refresh_otp(user, "verify_email")
                     if not otp:
                         messages.error(request, rec_or_err)
@@ -129,6 +143,9 @@ def verify_email_view(request: HttpRequest, user_id: int) -> HttpResponse:
             ok, msg = verify_otp(user, "verify_email", form.cleaned_data["otp"])
             if ok:
                 Profile.objects.filter(user=user).update(is_email_verified=True)
+                ip = _client_ip(request)
+                logger.info("Email verified for %s from IP %s", user.username, ip)
+
                 messages.success(request, "✅ Email verified. You can log in now.")
                 return _safe_redirect("/login", "accounts:login")
             messages.error(request, msg)
@@ -149,6 +166,9 @@ def resend_verification_otp(request: HttpRequest, user_id: int) -> HttpResponse:
         if not otp:
             messages.error(request, rec_or_err)
         else:
+            ip = _client_ip(request)
+            logger.info("Resent verification OTP for %s from IP %s", user.username, ip)
+
             send_otp_email(user, "verify_email", otp)
             messages.success(request, "✅ OTP resent to your email.")
     except Exception as e:
@@ -168,6 +188,9 @@ def login_view(request: HttpRequest) -> HttpResponse:
             try:
                 user = form.cleaned_data["user"]
                 profile, _ = Profile.objects.get_or_create(user=user)
+
+                ip = _client_ip(request)
+                logger.info("User %s attempting login from IP %s", user.username, ip)
 
                 if not profile.is_email_verified:
                     otp, rec_or_err = create_or_refresh_otp(user, "verify_email")
@@ -194,6 +217,9 @@ def login_view(request: HttpRequest) -> HttpResponse:
 @login_required
 def logout_view(request: HttpRequest) -> HttpResponse:
     try:
+        ip = _client_ip(request)
+        logger.info("User %s logged out from IP %s", request.user.username, ip)
+
         logout(request)
         messages.info(request, "ℹ️ You are logged out.")
     except Exception as e:
@@ -222,6 +248,9 @@ def password_reset_request_view(request: HttpRequest) -> HttpResponse:
                 messages.error(request, rec_or_err)
                 return _safe_redirect("/reset", "accounts:password-reset-request")
 
+            ip = _client_ip(request)
+            logger.info("Password reset OTP requested for %s from IP %s", user.username, ip)
+
             send_otp_email(user, "password_reset", otp)
             messages.success(request, "✅ OTP sent for password reset.")
             return _safe_redirect("/reset", "accounts:password-reset-verify", user_id=user.id)
@@ -241,6 +270,9 @@ def password_reset_verify_view(request: HttpRequest, user_id: int) -> HttpRespon
         try:
             ok, msg = verify_otp(user, "password_reset", form.cleaned_data["otp"])
             if ok:
+                ip = _client_ip(request)
+                logger.info("Password reset OTP verified for %s from IP %s", user.username, ip)
+
                 request.session["pw_reset_user_id"] = user.id
                 return _safe_redirect("/reset", "accounts:password-reset-set")
             messages.error(request, msg)
@@ -268,6 +300,10 @@ def password_reset_set_view(request: HttpRequest) -> HttpResponse:
                 user.set_password(form.cleaned_data["new_password1"])
                 user.save()
                 request.session.pop("pw_reset_user_id", None)
+
+            ip = _client_ip(request)
+            logger.info("Password reset completed for %s from IP %s", user.username, ip)
+
             messages.success(request, "✅ Password updated. Please log in.")
             return _safe_redirect("/login", "accounts:login")
         except Exception as e:
