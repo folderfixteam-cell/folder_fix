@@ -5,7 +5,7 @@
     <div class="row g-4 mt-lg-5 pb-lg-5" role="list" aria-label="FolderFix team members">
       {% for member in team_members %}
       <div class="col-12 col-sm-6 col-lg-4 px-lg-2 p-0" role="listitem">
-        <article class="team-card h-100" itemscope itemtype="https://schema.org/Person" aria-label="{{ member.full_name }}">
+        <article class="team-card  border h-100" itemscope itemtype="https://schema.org/Person" aria-label="{{ member.full_name }}">
           
           {% include "partials/components/team-profile.html" %}
 

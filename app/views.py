@@ -1,9 +1,7 @@
 # app/views.py
 from __future__ import annotations
-
 import logging
 from typing import Dict, Any
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
@@ -145,7 +143,7 @@ def contact_view(request: HttpRequest) -> HttpResponse:
 
 
 @login_required(login_url="accounts:login")
-# @membership_required  # uncomment when membership gating is ready
+# @membership_required  
 @require_http_methods(["GET"])
 def combo_list_view(request: HttpRequest, slug: str) -> HttpResponse:
     try:
@@ -158,7 +156,7 @@ def combo_list_view(request: HttpRequest, slug: str) -> HttpResponse:
 
 
 @login_required(login_url="accounts:login")
-# @membership_required  # uncomment when membership gating is ready
+# @membership_required  
 @require_http_methods(["GET"])
 def cate_list_view(request: HttpRequest, slug: str) -> HttpResponse:
     try:
@@ -224,7 +222,7 @@ def faq_view(request: HttpRequest) -> HttpResponse:
     return render(request, "app/faq.html", ctx)
 
 
-def Handler404View(request, exception):  # spelling fix: 'exception' not 'exeption'
+def Handler404View(request, exception):  
     return render(request, "errors/404.html", status=404)
 
 
@@ -233,9 +231,8 @@ def Handler404View(request, exception):  # spelling fix: 'exception' not 'exepti
 def robots_txt(request):
     sitemap_url = request.build_absolute_uri('/sitemap.xml')
     content = f"""User-agent: *
-Disallow:
-
-# Sitemap location
-Sitemap: {sitemap_url}
-"""
+                Disallow:
+                # Sitemap location
+                Sitemap: {sitemap_url}
+            """
     return HttpResponse(content, content_type="text/plain")

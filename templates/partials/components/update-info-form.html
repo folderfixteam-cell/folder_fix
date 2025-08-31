@@ -1,0 +1,40 @@
+ <form method="post" novalidate>
+              {% csrf_token %}
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label class="form-label small text-uppercase text-muted">{{ form.first_name.label }}</label>
+                  {{ form.first_name }}
+                  {% if form.first_name.errors %}
+                    <div class="invalid-feedback d-block">{{ form.first_name.errors|striptags }}</div>
+                  {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small text-uppercase text-muted">{{ form.last_name.label }}</label>
+                  {{ form.last_name }}
+                  {% if form.last_name.errors %}
+                    <div class="invalid-feedback d-block">{{ form.last_name.errors|striptags }}</div>
+                  {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small text-uppercase text-muted">{{ form.username.label }}</label>
+                  {{ form.username }}
+                  {% if form.username.errors %}
+                    <div class="invalid-feedback d-block">{{ form.username.errors|striptags }}</div>
+                  {% endif %}
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small text-uppercase text-muted">Email</label>
+                  <input class="form-control" value="{{ request.user.email }}" readonly>
+                </div>
+              </div>
+
+              <div class="mt-4 d-flex gap-2">
+                <button class="btn btn-primary"><i class="bi bi-save me-1"></i>Save Changes</button>
+                <a href="{% url 'accounts:dashboard' %}" class="btn btn-danger px-4 pt-2">
+                  <i class="bi bi-x-circle me-1"></i>Cancel
+                </a>
+              </div>
+            </form>

@@ -1,18 +1,4 @@
-from .models import (
-    NavLink,
-    Footer,
-    HeroSection,
-    Brand,
-    UniversalCombo,
-    Category,
-    FAQ,
-    WhyChooseItem,
-    ContactInfo,
-    ServiceItem,
-    TeamMember,
-    TitleSection,
-    Feedback,
-)
+from .models import *
 from django.conf import settings
 from datetime import date
 
@@ -143,9 +129,11 @@ def get_faq_context():
 
 def get_privacy_context():
     ctx = common_context("privacy")
+    privacy_sections = PolicySection.objects.all()
     ctx.update(
         {
             "privacy_last_updated": date(2025, 8, 28),
+            "privacy_sections": privacy_sections ,
             "site_name": getattr(settings, "SITE_NAME", "FolderFix"),
             "support_email": getattr(settings, "DEFAULT_FROM_EMAIL", "support@example.com"),
         }
@@ -155,9 +143,11 @@ def get_privacy_context():
 
 def get_term_context():
     ctx = common_context("terms")
+    term_sections = TermsSection.objects.all()
     ctx.update(
         {
             "terms_last_updated": date(2025, 8, 28),
+            "term_sections":term_sections,
             "site_name": getattr(settings, "SITE_NAME", "FolderFix"),
         }
     )

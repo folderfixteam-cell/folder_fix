@@ -1,0 +1,17 @@
+ <div class="col-12 combo-item p-0"
+               data-main="{{ cate.main_model|lower }}"
+               data-combos="{{ cate.compatible_models|lower }}"
+               data-line="{{ cate.main_model }} : {{ cate.compatible_models }}">
+            <div class="common-card shadow-sm border">
+              <div class="d-flex justify-content-between align-items-start gap-2">
+                <p class="card-text lh-base m-0">
+                  <span class="text-primary fw-semibold main-model"
+                        data-original="{{ cate.main_model }}">{{ cate.main_model }}</span>
+                  <span class="text-muted"> : </span>
+                  <span class="compatibles"
+                        data-original="{{ cate.compatible_models }}">{{ cate.compatible_models }}</span>
+                </p>
+                
+              </div>
+            </div>
+          </div>

@@ -1,98 +1,35 @@
-{% extends "app/base.html" %}
-{% block title %}Terms & Conditions — {{ site_name|default:"FolderFix" }}{% endblock %}
-
+{% extends "app/base.html" %} 
+{% block title %}Terms & Conditions — {{site_name|default:"FolderFix" }}
+{% endblock %} 
 {% block content %}
-<section class="py-5" role="document" aria-labelledby="termsTitle">
-  <div class="container py-5">
+
+{% include "partials/section/hero.html"%}
+
+<section class="term-section" role="document" aria-labelledby="termsTitle">
+  <div class="container">
     <div class="row g-3">
-      <div class="col-12">
-        <div class="common-card p-4 shadow-sm" itemscope itemtype="https://schema.org/TermsOfService">
-          <div class="d-flex align-items-start gap-3 mb-3">
-            <div class="display-6 text-primary" aria-hidden="true"><i class="bi bi-file-earmark-text-fill"></i></div>
-            <div>
-              <h1 class="h3 mb-1 fw-bold" id="termsTitle" itemprop="name">Terms &amp; Conditions</h1>
-              <p class="text-muted small mb-0" itemprop="about">
-                The rules for using {{ site_name|default:"FolderFix" }} services.
-              </p>
-            </div>
-          </div>
+      {% for section in term_sections %}
+      <div class="col-12 p-0 ">
+        <article
+          id="{{ section.slug }}"
+          class="common-card border h-100"
+          itemprop="hasPart"
+          itemscope
+          itemtype="https://schema.org/CreativeWork"
+        >
+          <h5 class="fw-bold mb-3">
+            {% if section.icon %}
+            <i class="{{ section.icon }} text-primary me-2"></i>
+            {% endif %}
+            <span itemprop="name">{{ section.title }}</span>
+          </h5>
 
-          <!-- TOC -->
-          <nav class="mb-4" aria-label="Table of contents">
-            <h6 class="mb-2 fw-semibold"><i class="bi bi-list-ul me-2" aria-hidden="true"></i>Contents</h6>
-            <div class="d-flex flex-wrap gap-2 small">
-              <a class="text-decoration-none" href="#agreement">• Agreement</a>
-              <span class="mx-1">|</span>
-              <a class="text-decoration-none" href="#accounts">• Accounts</a>
-              <span class="mx-1">|</span>
-              <a class="text-decoration-none" href="#payments">• Payments</a>
-              <span class="mx-1">|</span>
-              <a class="text-decoration-none" href="#intellectual-property">• IP</a>
-              <span class="mx-1">|</span>
-              <a class="text-decoration-none" href="#limitation">• Liability</a>
-              <span class="mx-1">|</span>
-              <a class="text-decoration-none" href="#governing-law">• Governing law</a>
-              <span class="mx-1">|</span>
-              <a class="text-decoration-none" href="#changes">• Changes</a>
-            </div>
-          </nav>
-        </div>
-      </div>
-
-      <!-- Terms Sections -->
-      <div class="col-12">
-        <article id="agreement" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-patch-check-fill me-2"></i><span itemprop="name">Agreement</span></h5>
-          <p class="text-muted" itemprop="text">By using our services you agree to these Terms. If you do not agree, do not use our services.</p>
+          <p class="text-muted" itemprop="text">
+            {{ section.content|linebreaks }}
+          </p>
         </article>
       </div>
-
-      <div class="col-12">
-        <article id="accounts" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-person-lines-fill me-2"></i><span itemprop="name">Accounts</span></h5>
-          <p class="text-muted" itemprop="text">You are responsible for keeping your account credentials secure. You must provide accurate information and keep it up-to-date. We may suspend accounts that violate these Terms.</p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article id="payments" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-credit-card-2-front-fill me-2"></i><span itemprop="name">Payments &amp; Subscriptions</span></h5>
-          <p class="text-muted" itemprop="text">Paid features, subscriptions and their pricing are described on the site. By subscribing you authorize recurring charges. Refunds and cancellations follow the policy described on the pricing page.</p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article id="intellectual-property" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-journal-richtext me-2"></i><span itemprop="name">Intellectual Property</span></h5>
-          <p class="text-muted" itemprop="text">All content on the site is owned by us or our licensors. You may not copy or redistribute material without permission.</p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article id="limitation" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-exclamation-triangle-fill me-2"></i><span itemprop="name">Limitation of Liability</span></h5>
-          <p class="text-muted" itemprop="text">To the maximum extent permitted by law, we are not liable for indirect or consequential losses. Our total liability is limited to the amount you paid in the last 12 months.</p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article id="governing-law" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-flag-fill me-2"></i><span itemprop="name">Governing Law</span></h5>
-          <p class="text-muted" itemprop="text">These Terms are governed by the laws of the jurisdiction where {{ site_name|default:"FolderFix" }} is established.</p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article id="changes" class="card shadow-sm p-4 h-100" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <h5 class="fw-semibold"><i class="bi bi-pencil-square me-2"></i><span itemprop="name">Changes to Terms</span></h5>
-          <p class="text-muted" itemprop="text">We may update these Terms; when we do we will post a revised date. Continued use after changes constitutes acceptance.</p>
-        </article>
-      </div>
-
-      <div class="col-12 mt-3 text-muted small text-center">
-        <strong>Last updated:</strong>
-        <time itemprop="dateModified" datetime="{{ terms_last_updated|date:'Y-m-d' }}">{{ terms_last_updated|default:"August 28, 2025" }}</time>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

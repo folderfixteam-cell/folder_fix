@@ -423,19 +423,20 @@ section {
     margin: auto;
 }
 
-
+/* ==============================
+    INPUT STYLES
+============================== */
+input{
+    box-shadow:none !important;
+}
 
 /* ==============================
    2. SHOP STYLES
 ============================== */
 
-
-
-
-
 .mark {
     color: #007bff;
-    background-color: inherit;
+    background-color: inherit !important;
     /* Blue */
 }
 
@@ -488,6 +489,7 @@ footer a:active {
 /* ==============================
    12. ERROR PAGES
 ============================== */
+
 .error-404 {
     min-height: 80vh;
     display: flex;

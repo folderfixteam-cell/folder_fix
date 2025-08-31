@@ -246,3 +246,21 @@ class FeedbackAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "created_at")
     search_fields = ("name", "email", "message")
     readonly_fields = ("created_at",)
+
+
+
+
+@admin.register(PolicySection)
+class PolicySectionAdmin(admin.ModelAdmin):
+    list_display = ("title", "slug", "order")
+    search_fields = ("title", "content")
+    prepopulated_fields = {"slug": ("title",)}
+
+
+
+@admin.register(TermsSection)
+class TermsSectionAdmin(admin.ModelAdmin):
+    list_display = ("title", "slug", "order")
+    search_fields = ("title", "content")
+    prepopulated_fields = {"slug": ("title",)}
+    ordering = ("order",)

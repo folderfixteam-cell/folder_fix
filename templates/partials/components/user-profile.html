@@ -1,0 +1,44 @@
+<div class="col-12 col-lg-4 d-flex">
+        <div class="p-2 w-100 h-100  common-card">
+          <div class="card-body text-center">
+            <!-- Avatar placeholder -->
+            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center bg-light"
+                 style="width:96px;height:96px;font-weight:600;font-size:28px;">
+              {{ request.user.first_name|default:request.user.username|first|upper }}{{ request.user.last_name|first|upper }}
+            </div>
+
+            <h5 class="mb-1">{{ request.user.get_full_name|default:request.user.username }}</h5>
+            <p class="text-muted mb-2"><i class="bi bi-person-circle me-1"></i>@{{ request.user.username }}</p>
+
+            {% if profile.is_email_verified %}
+              <span class="badge text-bg-success"><i class="bi bi-check-circle me-1"></i>Email Verified</span>
+            {% else %}
+              <span class="badge text-bg-warning"><i class="bi bi-exclamation-triangle me-1"></i>Email Not Verified</span>
+            {% endif %}
+          </div>
+
+          <div class="list-group list-group-flush small">
+            <div class="list-group-item d-flex justify-content-between">
+              <span><i class="bi bi-envelope me-2"></i>Email</span>
+              <span class="text-muted">{{ request.user.email|default:"—" }}</span>
+            </div>
+            <div class="list-group-item d-flex justify-content-between">
+              <span><i class="bi bi-calendar-plus me-2"></i>Joined</span>
+              <span class="text-muted">{{ request.user.date_joined|date:"M d, Y H:i" }}</span>
+            </div>
+            <div class="list-group-item d-flex justify-content-between">
+              <span><i class="bi bi-clock-history me-2"></i>Last login</span>
+              <span class="text-muted">{{ request.user.last_login|date:"M d, Y H:i" }}</span>
+            </div>
+          </div>
+
+          <div class="card-body d-grid gap-2">
+            <a class="btn btn-primary" href="{% url 'accounts:password-reset-request' %}">
+              <i class="bi bi-key me-1"></i>Change Password
+            </a>
+            <a class="btn btn-danger" href="{% url 'accounts:logout' %}">
+              <i class="bi bi-box-arrow-right me-1"></i>Logout
+            </a>
+          </div>
+        </div>
+      </div>

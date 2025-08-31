@@ -449,3 +449,40 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback from {self.name}"
+
+
+
+class PolicySection(models.Model):
+    """
+    A section in the Privacy Policy page (e.g. What we collect, How we use, etc.)
+    """
+    slug = models.SlugField(unique=True, help_text="Unique ID, e.g. 'what-we-collect'")
+    icon = models.CharField(max_length=50, blank=True, help_text="Bootstrap icon class, e.g. 'bi bi-card-list'")
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    order = models.PositiveIntegerField(default=0, help_text="Order of appearance")
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.title
+
+
+
+
+class TermsSection(models.Model):
+    """
+    Each section of the Terms (Agreement, Accounts, Payments, etc.)
+    """
+    slug = models.SlugField(unique=True, help_text="Unique ID for section, e.g. 'agreement'")
+    icon = models.CharField(max_length=50, blank=True, help_text="Bootstrap icon class, e.g. 'bi bi-patch-check-fill'")
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    order = models.PositiveIntegerField(default=0, help_text="Order of appearance")
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.title

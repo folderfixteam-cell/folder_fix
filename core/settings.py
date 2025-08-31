@@ -147,7 +147,8 @@ USE_TZ = True
 
 # static
 STATIC_URL = "/static/"
-STATIC_ROOT = "https://folderfixteam-cell.github.io/folder-fix-static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+# STATIC_ROOT = "https://folderfixteam-cell.github.io/folder-fix-static/"
 
 
 MEDIA_URL = '/media/'

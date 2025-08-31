@@ -1,0 +1,24 @@
+
+            <!-- Membership Info -->
+            <h5 class="mb-3"><i class="bi bi-gem me-2 text-primary"></i>Membership</h5>
+            {% if is_active %}
+              <div class="btn btn-success btn-sm p-3 d-flex align-items-center">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Active — Valid till:
+                {% if membership.expires_at %}
+                  <strong class="ms-1">{{ membership.expires_at|date:"M d, Y H:i" }}</strong>
+                {% else %}
+                  <strong class="ms-1 text-dark">Not yet activated</strong>
+                {% endif %}
+              </div>
+            {% else %}
+              <div class="btn btn-warning my-3  btn-sm p-3 d-flex align-items-center w-100">
+                <i class="bi bi-x-circle-fill me-2"></i>Not Active
+              </div>
+              <form id="payForm" method="post" action="{% url 'member:create-order' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-credit-card me-2"></i>Pay ₹{{ price_rupees }} now
+                </button>
+              </form>
+            {% endif %}

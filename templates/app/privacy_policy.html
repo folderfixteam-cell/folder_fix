@@ -1,225 +1,39 @@
 {% extends "app/base.html" %} 
-{% block title %}Privacy Policy — {{ site_name|default:"FolderFix" }}{% endblock %} 
-
+{% block title %}Privacy Policy — {{site_name|default:"FolderFix" }}
+{% endblock %} 
 {% block content %}
-<section class="py-5" role="document" aria-labelledby="privacyTitle">
-  <div class="container py-5">
-    <div
-      class="common-card p-4 shadow-sm mb-4"
-      itemscope
-      itemtype="https://schema.org/PrivacyPolicy"
-    >
-      <div class="d-flex align-items-start gap-3 mb-3">
-        <div class="display-6 text-primary" aria-hidden="true">
-          <i class="bi bi-shield-lock-fill"></i>
-        </div>
-        <div>
-          <h1 class="h3 mb-1 fw-bold" id="privacyTitle" itemprop="name">
-            Privacy Policy
-          </h1>
-          <p class="text-muted small mb-0" itemprop="about">
-            How {{ site_name|default:"FolderFix" }} collects, uses and protects
-            your personal data.
-          </p>
-        </div>
-      </div>
 
-      <!-- Quick links / TOC -->
-      <nav class="mb-4" aria-label="Table of contents">
-        <h6 class="mb-2 fw-semibold">
-          <i class="bi bi-list-check me-2" aria-hidden="true"></i>Contents
-        </h6>
-        <div class="d-flex flex-wrap gap-2 small">
-          <a class="text-decoration-none" href="#what-we-collect"
-            >• What we collect</a>
-          <span class="mx-1">|</span>
-          <a class="text-decoration-none" href="#how-we-use">• How we use it</a>
-          <span class="mx-1">|</span>
-          <a class="text-decoration-none" href="#cookies">• Cookies</a>
-          <span class="mx-1">|</span>
-          <a class="text-decoration-none" href="#sharing"
-            >• Sharing & Third parties</a>
-          <span class="mx-1">|</span>
-          <a class="text-decoration-none" href="#your-rights">• Your rights</a>
-          <span class="mx-1">|</span>
-          <a class="text-decoration-none" href="#contact">• Contact</a>
-        </div>
-      </nav>
-    </div>
+{% include "partials/section/hero.html"%}
 
+
+<section role="document" aria-labelledby="privacyTitle">
+  <div class="container">
     <!-- Policy Sections as col-12 cards -->
-    <div class="row g-3">
-      <div class="col-12">
+    <div class="row g-3 ">
+      {% for section in privacy_sections %}
+      <div class="col-12 p-0">
         <article
-          id="what-we-collect"
-          class="card shadow-sm p-4 h-100"
+          id="{{ section.slug }}"
+          class="common-card border h-100"
           itemprop="hasPart"
           itemscope
           itemtype="https://schema.org/CreativeWork"
         >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-card-list me-2"></i>
-            <span itemprop="name">What we collect</span>
+          <h5 class="fw-bold mb-3">
+            {% if section.icon %}
+            <i class="{{ section.icon }} text-primary me-2"></i>
+            {% endif %}
+            <span itemprop="name">{{ section.title }}</span>
           </h5>
+
           <p class="text-muted mb-0" itemprop="text">
-            We may collect information you provide directly (name, email,
-            profile details, messages), payment and billing details, and usage
-            data (pages visited, actions, device and browser info).
+            {{ section.content|linebreaks }}
           </p>
         </article>
       </div>
-
-      <div class="col-12">
-        <article
-          id="how-we-use"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-gear-fill me-2"></i>
-            <span itemprop="name">How we use your data</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="text">
-            We use your information to provide and improve our services, process
-            payments, send transactional emails, and for security and fraud
-            prevention. Marketing emails are only sent if you opt in.
-          </p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article
-          id="cookies"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-file-earmark-code-fill me-2"></i>
-            <span itemprop="name">Cookies and tracking</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="text">
-            We use cookies and similar technologies to remember preferences,
-            analyze usage, and personalize content. Third-party services
-            (analytics, payment providers) may also set cookies.
-          </p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article
-          id="sharing"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-people-fill me-2"></i>
-            <span itemprop="name">Sharing & Third parties</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="text">
-            We do not sell personal data. We may share info with service
-            providers (payments, analytics, email) or if required by law. Only
-            necessary data is shared.
-          </p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article
-          id="your-rights"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-person-check-fill me-2"></i>
-            <span itemprop="name">Your rights</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="text">
-            You have the right to access, correct, or delete your data. You can
-            opt out of marketing anytime. Contact us below to exercise your
-            rights.
-          </p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article
-          id="retention"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-clock-history me-2"></i>
-            <span itemprop="name">Data retention</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="text">
-            We keep data as long as necessary for services, legal obligations,
-            and dispute resolution. Data is anonymized/aggregated after
-            retention ends.
-          </p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article
-          id="security"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/CreativeWork"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-shield-fill-check me-2"></i>
-            <span itemprop="name">Security</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="text">
-            We apply industry-standard security measures to protect data. No
-            method is 100% secure—please contact us immediately if you suspect a
-            breach.
-          </p>
-        </article>
-      </div>
-
-      <div class="col-12">
-        <article
-          id="contact"
-          class="card shadow-sm p-4 h-100"
-          itemprop="hasPart"
-          itemscope
-          itemtype="https://schema.org/ContactPoint"
-        >
-          <h5 class="fw-semibold mb-2">
-            <i class="bi bi-envelope-fill me-2"></i>
-            <span itemprop="name">Contact</span>
-          </h5>
-          <p class="text-muted mb-0" itemprop="description">
-            If you have questions, email us at
-            <a
-              href="mailto:{{ support_email|default:'support@example.com' }}"
-              class="text-decoration-none"
-              itemprop="email"
-              >{{ support_email|default:'support@example.com' }}</a>.
-          </p>
-        </article>
-      </div>
-    </div>
-
-    <div class="mt-4 text-muted small text-center">
-      <strong>Last updated:</strong>
-      <time
-        itemprop="dateModified"
-        datetime="{{ privacy_last_updated|date:'Y-m-d' }}"
-        >{{ privacy_last_updated|default:"August 28, 2025" }}</time>
+      {% endfor %}
     </div>
   </div>
 </section>
+
 {% endblock %}

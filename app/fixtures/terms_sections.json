@@ -1,0 +1,79 @@
+[
+  {
+    "model": "app.termssection",
+    "pk": 1,
+    "fields": {
+      "slug": "agreement",
+      "icon": "bi bi-patch-check-fill",
+      "title": "Agreement",
+      "content": "By using our services you agree to these Terms. If you do not agree, do not use our services.",
+      "order": 1
+    }
+  },
+  {
+    "model": "app.termssection",
+    "pk": 2,
+    "fields": {
+      "slug": "accounts",
+      "icon": "bi bi-person-lines-fill",
+      "title": "Accounts",
+      "content": "You are responsible for keeping your account credentials secure. You must provide accurate information and keep it up-to-date. We may suspend accounts that violate these Terms.",
+      "order": 2
+    }
+  },
+  {
+    "model": "app.termssection",
+    "pk": 3,
+    "fields": {
+      "slug": "payments",
+      "icon": "bi bi-credit-card-2-front-fill",
+      "title": "Payments & Subscriptions",
+      "content": "Paid features, subscriptions and their pricing are described on the site. By subscribing you authorize recurring charges. Refunds and cancellations follow the policy described on the pricing page.",
+      "order": 3
+    }
+  },
+  {
+    "model": "app.termssection",
+    "pk": 4,
+    "fields": {
+      "slug": "intellectual-property",
+      "icon": "bi bi-journal-richtext",
+      "title": "Intellectual Property",
+      "content": "All content on the site is owned by us or our licensors. You may not copy or redistribute material without permission.",
+      "order": 4
+    }
+  },
+  {
+    "model": "app.termssection",
+    "pk": 5,
+    "fields": {
+      "slug": "limitation",
+      "icon": "bi bi-exclamation-triangle-fill",
+      "title": "Limitation of Liability",
+      "content": "To the maximum extent permitted by law, we are not liable for indirect or consequential losses. Our total liability is limited to the amount you paid in the last 12 months.",
+      "order": 5
+    }
+  },
+  {
+    "model": "app.termssection",
+    "pk": 6,
+    "fields": {
+      "slug": "governing-law",
+      "icon": "bi bi-flag-fill",
+      "title": "Governing Law",
+      "content": "These Terms are governed by the laws of the jurisdiction where FolderFix is established.",
+      "order": 6
+    }
+  },
+  {
+    "model": "app.termssection",
+    "pk": 7,
+    "fields": {
+      "slug": "changes",
+      "icon": "bi bi-pencil-square",
+      "title": "Changes to Terms",
+      "content": "We may update these Terms; when we do we will post a revised date. Continued use after changes constitutes acceptance.",
+      "order": 7
+    }
+  }
+]

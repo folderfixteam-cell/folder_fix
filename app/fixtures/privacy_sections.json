@@ -1,0 +1,91 @@
+[
+    {
+      "model": "app.policysection",
+      "pk": 1,
+      "fields": {
+        "slug": "what-we-collect",
+        "icon": "bi bi-card-list",
+        "title": "What we collect",
+        "content": "We may collect information you provide directly (name, email, profile details, messages), payment and billing details, and usage data (pages visited, actions, device and browser info).",
+        "order": 1
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 2,
+      "fields": {
+        "slug": "how-we-use",
+        "icon": "bi bi-gear-fill",
+        "title": "How we use your data",
+        "content": "We use your information to provide and improve our services, process payments, send transactional emails, and for security and fraud prevention. Marketing emails are only sent if you opt in.",
+        "order": 2
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 3,
+      "fields": {
+        "slug": "cookies",
+        "icon": "bi bi-file-earmark-code-fill",
+        "title": "Cookies and tracking",
+        "content": "We use cookies and similar technologies to remember preferences, analyze usage, and personalize content. Third-party services (analytics, payment providers) may also set cookies.",
+        "order": 3
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 4,
+      "fields": {
+        "slug": "sharing",
+        "icon": "bi bi-people-fill",
+        "title": "Sharing & Third parties",
+        "content": "We do not sell personal data. We may share info with service providers (payments, analytics, email) or if required by law. Only necessary data is shared.",
+        "order": 4
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 5,
+      "fields": {
+        "slug": "your-rights",
+        "icon": "bi bi-person-check-fill",
+        "title": "Your rights",
+        "content": "You have the right to access, correct, or delete your data. You can opt out of marketing anytime. Contact us below to exercise your rights.",
+        "order": 5
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 6,
+      "fields": {
+        "slug": "retention",
+        "icon": "bi bi-clock-history",
+        "title": "Data retention",
+        "content": "We keep data as long as necessary for services, legal obligations, and dispute resolution. Data is anonymized/aggregated after retention ends.",
+        "order": 6
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 7,
+      "fields": {
+        "slug": "security",
+        "icon": "bi bi-shield-fill-check",
+        "title": "Security",
+        "content": "We apply industry-standard security measures to protect data. No method is 100% secure—please contact us immediately if you suspect a breach.",
+        "order": 7
+      }
+    },
+    {
+      "model": "app.policysection",
+      "pk": 8,
+      "fields": {
+        "slug": "contact",
+        "icon": "bi bi-envelope-fill",
+        "title": "Contact",
+        "content": "If you have questions, email us at support@example.com.",
+        "order": 8
+      }
+    }
+  ]
+  
