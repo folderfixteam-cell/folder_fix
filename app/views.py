@@ -9,8 +9,8 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse, NoReverseMatch
 from django.views.decorators.http import require_http_methods
-
 from .forms import ContactForm, FAQForm, FeedbackForm
+from member.decorators import membership_required
 from .utils import (
     get_home_context,
     get_about_context,
@@ -21,7 +21,7 @@ from .utils import (
     get_combo_list,
     get_category_list,
 )
-from member.decorators import membership_required  # keep if you plan to enforce
+
 
 logger = logging.getLogger(__name__)
 
@@ -46,15 +46,7 @@ def _client_ip(req: HttpRequest) -> str:
     return req.META.get("REMOTE_ADDR", "")
 
 
-# --------- pages ---------
-from django.views.decorators.http import require_http_methods
-from django.db import transaction
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.http import HttpRequest, HttpResponse
-import logging
 
-logger = logging.getLogger(__name__)
 
 
 @require_http_methods(["GET", "POST"])
@@ -143,7 +135,7 @@ def contact_view(request: HttpRequest) -> HttpResponse:
 
 
 @login_required(login_url="accounts:login")
-# @membership_required  
+# @membership_required
 @require_http_methods(["GET"])
 def combo_list_view(request: HttpRequest, slug: str) -> HttpResponse:
     try:
@@ -156,7 +148,7 @@ def combo_list_view(request: HttpRequest, slug: str) -> HttpResponse:
 
 
 @login_required(login_url="accounts:login")
-# @membership_required  
+# @membership_required
 @require_http_methods(["GET"])
 def cate_list_view(request: HttpRequest, slug: str) -> HttpResponse:
     try:
@@ -222,7 +214,7 @@ def faq_view(request: HttpRequest) -> HttpResponse:
     return render(request, "app/faq.html", ctx)
 
 
-def Handler404View(request, exception):  
+def Handler404View(request, exception):
     return render(request, "errors/404.html", status=404)
 
 
