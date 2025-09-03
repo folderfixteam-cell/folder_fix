@@ -6,9 +6,9 @@
 <section class="pt-5 container-fluid" role="region" aria-labelledby="verifyEmailTitle">
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-md-5">
-        <div class="common-card shadow-sm">
-          <div class="card-body p-4">
+      <div class="col-md-5 px-lg-2 p-0">
+        <div class="common-card shadow-sm px-lg-3 p-2">
+          <div class="card-body p-lg-4 p-0">
 
             <!-- Title -->
             <h4 class="mb-3 text-center fw-bold" id="verifyEmailTitle">
@@ -18,8 +18,8 @@
 
             <!-- Info text -->
             <p class="mb-4 text-center">
-              We sent an OTP to 
-              <strong class="text-danger">{{ user.email }}</strong>.  
+              We sent an OTP to
+              <strong class="text-danger">{{ user.email }}</strong>.
               It expires in <span class="fw-semibold">{{ settings.OTP_EXPIRY_MINUTES|default:10 }}</span> minutes.
             </p>
 

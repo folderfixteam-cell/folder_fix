@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from app.models import UniversalCombo, Category  # अपने models के सही नाम से import करें
+from app.models import  Category #, UniversalCombos,
 
 
 # --- Static pages sitemap ---
@@ -28,7 +28,8 @@ class ComboSitemap(Sitemap):
     priority = 0.9
 
     def items(self):
-        return UniversalCombo.objects.all()
+        # return UniversalCombo.objects.all()
+        pass
 
     def location(self, obj):
         return reverse("app:combo-list", kwargs={"slug": obj.slug})

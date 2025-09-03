@@ -1,0 +1,122 @@
+[
+  {
+    "model": "shop.ServiceItem",
+    "pk": 1,
+    "fields": {
+      "title": "Mobile Repair",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-tools",
+      "color": 1,
+      "order": 1,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 2,
+    "fields": {
+      "title": "Screen Replacement",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-phone",
+      "color": 2,
+      "order": 2,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 3,
+    "fields": {
+      "title": "Battery Replacement",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-battery-full",
+      "color": 3,
+      "order": 3,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 4,
+    "fields": {
+      "title": "Mobile Accessories",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-headphones",
+      "color": 4,
+      "order": 4,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 5,
+    "fields": {
+      "title": "Software Update",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-cloud-arrow-down",
+      "color": 1,
+      "order": 5,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 6,
+    "fields": {
+      "title": "Data Recovery",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-hdd",
+      "color": 2,
+      "order": 6,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 7,
+    "fields": {
+      "title": "Unlocking Service",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-unlock",
+      "color": 3,
+      "order": 7,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  },
+  {
+    "model": "shop.ServiceItem",
+    "pk": 8,
+    "fields": {
+      "title": "Water Damage Repair",
+      "description": "We provide expert mobile repair service with fast and reliable solutions.",
+      "icon_text": "",
+      "icon_class": "bi-droplet",
+      "color": 4,
+      "order": 8,
+      "is_enabled": true,
+      "created_at": "2025-09-02T09:00:00Z",
+      "updated_at": "2025-09-02T09:00:00Z"
+    }
+  }
+]

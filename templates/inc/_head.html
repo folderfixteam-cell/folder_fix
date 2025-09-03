@@ -1,4 +1,5 @@
-{% load static %} {% block meta_base %}
+{% load static %}
+{% block meta_base %}
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -101,7 +102,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 
-{# ---------- JSON-LD (Organization & WebSite) ---------- #}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -120,7 +120,7 @@
   }
 </script>
 
-{# ---------- JSON-LD (Default page as WebSite) ---------- #}
+
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -153,7 +153,7 @@
     ]
   }
 </script>
-{# JSON-LD: Terms page + breadcrumbs #}
+
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -195,7 +195,7 @@
   }
 </script>
 
-{# JSON-LD: WebPage + Breadcrumbs #}
+
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -237,5 +237,6 @@
   }
 </script>
 
-{% endif %} {# ---------- Optional: Page-specific blocks you can override
----------- #} {% block page_schema %}{% endblock %}
+{% endif %}
+{% block page_schema %}
+{% endblock %}
