@@ -247,6 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// scroll nav
+
 $(window).on("scroll", function () {
     if ($(this).scrollTop() > 50) {
         $("#mainNavbar").addClass("navbar-scroll");
@@ -254,5 +256,30 @@ $(window).on("scroll", function () {
         $("#mainNavbar").removeClass("navbar-scroll");
     }
 });
+
+
+// block copy
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+    alert("Copy is disabled on this site!");
+  });
+
+
+  // Disable Print (Ctrl+P)
+  window.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "p") {
+      e.preventDefault();
+      alert("Printing is disabled!");
+    }
+  });
+
+  // Blur screen when tab is hidden (blocks screenshot/recording partially)
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      document.body.style.filter = "blur(15px)";
+    } else {
+      document.body.style.filter = "none";
+    }
+  });
 
 

@@ -17,11 +17,11 @@
             </h4>
 
             <!-- Info text -->
-            <p class="mb-4 text-center">
+            <small class="mb-4 text-center d-inline-block">
               We sent an OTP to
-              <strong class="text-danger">{{ user.email }}</strong>.
+              <span class="text-danger">{{ user.email }}</span>.
               It expires in <span class="fw-semibold">{{ settings.OTP_EXPIRY_MINUTES|default:10 }}</span> minutes.
-            </p>
+            </small>
 
             <!-- OTP Form -->
             <form method="post" class="mb-3" role="form" aria-label="Email verification form">

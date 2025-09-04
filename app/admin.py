@@ -75,7 +75,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(UniversalCombo)
 class UniversalComboAdmin(admin.ModelAdmin):
-    list_display = ("main_model", "brand", "category", "active", "created_at")
+    list_display = ("pk","main_model", "brand", "category", "active", "created_at")
     list_filter = ("brand", "category", "active")
     search_fields = ("main_model", "compatible_models", "description")
     prepopulated_fields = {"slug": ("main_model",)}
